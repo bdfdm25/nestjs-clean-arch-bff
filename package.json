@@ -1,0 +1,123 @@
+{
+  "name": "nestjs-bff",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:mut": "npx stryker run"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.1.0",
+    "@fastify/static": "^6.5.0",
+    "@nestjs/axios": "^0.1.0",
+    "@nestjs/common": "^9.1.2",
+    "@nestjs/config": "^2.2.0",
+    "@nestjs/core": "^9.1.2",
+    "@nestjs/platform-express": "^9.1.2",
+    "@nestjs/platform-fastify": "^9.1.2",
+    "@nestjs/swagger": "^6.1.2",
+    "@nestjs/terminus": "^9.1.2",
+    "axios": "^0.26.1",
+    "fastify-swagger": "^5.1.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.5.5"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.1.4",
+    "@nestjs/schematics": "^9.0.3",
+    "@nestjs/testing": "^9.1.2",
+    "@stryker-mutator/core": "^6.2.2",
+    "@stryker-mutator/jest-runner": "^6.2.2",
+    "@types/express": "^4.17.13",
+    "@types/jest": "27.4.1",
+    "@types/node": "^17.0.25",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "source-map-support": "^0.5.21",
+    "supertest": "^6.2.2",
+    "ts-jest": "^27.1.4",
+    "ts-loader": "^9.2.8",
+    "ts-node": "^10.7.0",
+    "tsconfig-paths": "^3.14.1",
+    "typescript": "^4.6.3"
+  },
+  "engines": {
+    "node": ">=v16.17.0",
+    "npm": ">=8.15.0",
+    "pnpm": ">=7.18.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/common/",
+      "/node_modules/",
+      "/test/",
+      "/dto/",
+      "/entity/",
+      "/entities/",
+      "/health/",
+      ".module.ts$",
+      ".main.ts$",
+      "/dtos/"
+    ],
+    "coverageReporters": [
+      "json",
+      "text",
+      "lcov",
+      "clover",
+      "text-summary",
+      "cobertura"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 95,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@test/(.*)": "<rootDir>/../test/$1",
+      "^@usecases/(.*)": "<rootDir>/../src/core/use-cases/$1",
+      "^@dtos/(.*)": "<rootDir>/../src/core/domain/dtos/$1",
+      "^@entities/(.*)": "<rootDir>/../src/core/domain/entities/$1",
+      "^@infra/(.*)": "<rootDir>/../src/infra/$1"
+    }
+  }
+}
